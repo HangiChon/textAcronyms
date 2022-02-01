@@ -1,0 +1,16 @@
+{
+  "name": "textAcronyms",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/hanpencnd/textAcronyms.git",
+  "author": "Hangi Chon <hanpencnd@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^15.0.0",
+    "express": "^4.17.2",
+    "mongodb": "^4.3.1",
+    "mongoose": "^6.1.9",
+    "nodemon": "^2.0.15",
+    "uuid": "^8.3.2"
+  }
+}
