@@ -1,5 +1,5 @@
 const { Acronym } = require("./seeds");
-const mongoose = require("mongoose");
+const { v4: uuidv4 } = require("uuid");
 
 // response template
 const response = (res, code, msg, data) => {
@@ -78,19 +78,34 @@ const getAcronyms = (req, res) => {
       });
     }
   } catch (error) {
-    return response(res, 500, "Server Error");
+    return response(res, 500, "Server Error", error);
   }
 };
 
 //************************************************//
 //                 POST /acronym                  //
 //************************************************//
-const addAcronym = async (req, res) => {};
+const addAcronym = (req, res) => {
+  const { acronym, definition } = req.body;
+
+  try {
+    Acronym.create({ _id: uuidv4(), acronym, definition }, (err, result) => {
+      result
+        ? response(res, 200, "Successfully added a texting abbreviation", {
+            acronym,
+            definition
+          })
+        : response(res, 400, "Something went wrong");
+    });
+  } catch (error) {
+    response(res, 500, "Server Error", error);
+  }
+};
 
 //************************************************//
 //            PATCH /acronym/:acronymID           //
 //************************************************//
-const updateAcronym = async (req, res) => {};
+const updateAcronym = (req, res) => {};
 
 //************************************************//
 //           DELETE /acronym/:acronymID           //

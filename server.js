@@ -53,11 +53,11 @@ app.post("/acronym", addAcronym);
 //************************************************//
 //            PATCH /acronym/:acronymID           //
 //************************************************//
-// app.patch();
+app.patch("/acronym/:acronymID", updateAcronym);
 
 //************************************************//
 //           DELETE /acronym/:acronymID           //
 //************************************************//
-// app.delete();
+app.delete("/acronym/:acronymID", deleteAcronym);
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
